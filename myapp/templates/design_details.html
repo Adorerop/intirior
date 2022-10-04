@@ -75,9 +75,15 @@
                                  </div>
                               </div>
                            </div>
+                           {% if request.session.email %}
                            <div class="col-sm-6 margin_top40">
                               <a class="read_more " href="{% url 'estimate' pk=designer.pk %}">get Estimate</a>
                            </div>
+                           {% else %}
+                           <div class="col-sm-6 margin_top40">
+                              <a class="read_more " href="{% url 'login' %}">Login </a>
+                           </div>
+                           {% endif %}
                         </div>
                      </div>
                   </div>
