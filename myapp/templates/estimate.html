@@ -1,0 +1,32 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+
+      <div class="instant">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="titlepage text_align_left">
+                     <h2>Send {{designer.fname}} inquery</h2>
+                     <p>You have to fill inquery form and pay for inquery first</p>
+                     <a class="read_more" href="{% url 'inquery' pk=designer.pk %}">Proceed to inquery</a>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="instant_img">
+                     <figure><img src="{% static 'images/pc.png' %}" alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end instant -->
+   </body>
+</html>
+{% endblock %}

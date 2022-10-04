@@ -1,0 +1,38 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+      <!-- services -->
+      <div class="services_main">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Services</h2>
+                     <span>Choose any designers</span>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                  <ul class="nav nav-tabs md-tabs border_none" id="myTabMD" role="tablist">
+                     {% for i in designers %}
+                     <li class="nav-item lisertab">
+                        <a class="nav-link servi_tab" id="home-tab-md"  href="{% url 'design_details' pk=i.pk cat='RESIDENTAL' %}" role="tab" aria-controls="home-md"
+                           aria-selected="true">{{i.fname}}</a>
+                     </li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end services -->
+   </body>
+</html>
+{% endblock %}

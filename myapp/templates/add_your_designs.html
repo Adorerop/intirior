@@ -1,0 +1,81 @@
+{% extends 'designer_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+      <!-- contact -->
+      <div class="contact">
+         <div class="container text-center">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Add Your Designs</h2>
+                     <h1><span class="yello">You Can Add Only FOUR Pictures Per Catagory</span></h1>
+                     {% if msg %}
+                        <h1><span class="yello">{{msg}}</span></h1>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  
+                  <form  method="post" action="{% url 'add_your_designs' %}" enctype="multipart/form-data"> 
+                     {% csrf_token %}
+                     <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <select name="design_category" class="form-control">
+                              <option>---Select Design Category---</option>
+                              {% if RESIDENTAL_flag == False %}
+                                 <option value="RESIDENTAL">RESIDENTAL</option>
+                              {% else %}
+                              {% endif %}
+                              {% if RETAILDESIGN_flag == False %}
+                                 <option value="RETAILDESIGN">RETAILDESIGN</option>
+                              {% else %}
+                              {% endif %}
+                              {% if SPACEADAPTATION_flag == False %}
+                                 <option value="SPACEADAPTATION">SPACEADAPTATION</option>
+                              {% else %}
+                              {% endif %}
+                            </select>
+                        </div>
+                        {% if RESIDENTAL_flag == True and RETAILDESIGN_flag == True and SPACEADAPTATION_flag == True %}
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <a class="send" href="{% url 'your_designs' %}">View Your Designs</a>
+                        </div>
+                        {% else %}
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic1" required>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic2" required>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic3" required>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic4" required>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <button class="send">Add This Designs</button>
+                        </div>
+                        {% endif %}
+                     </div>
+                  </form>
+               </div>
+
+            </div>
+         </div>
+      </div>
+      
+      <!-- end contact  -->
+   </body>
+</html>
+{% endblock %}

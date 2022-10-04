@@ -1,0 +1,88 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+      <!-- contact -->
+      <div class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Contact Us</h2>
+                     {% if msg %}
+                        <h1><span class="yello">{{msg}}</span></h1>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  
+                  <form class="main_form" method="post" action="{% url 'contact' %}">
+                     {% csrf_token %}
+                     <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <input class="form-control" placeholder="Name" type="text" name="name">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <input class="form-control" placeholder="Email" type="text" name="email">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <input class="form-control" placeholder="Phone" type="text" name="mobile">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <textarea class="textarea" placeholder="Message" type="text" name="message"></textarea>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <button class="send">Send</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padddd">
+                  <div class="map_section">
+                     <div id="map">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <!-- end contact  -->
+      <script>
+         // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+         // Australia.
+         function initMap() {
+             var map = new google.maps.Map(document.getElementById('map'), {
+                 zoom: 16.22,
+                 center: {
+                     lat: 51.5015426,
+                     lng: -0.1412795
+                 },
+             });
+         
+             var image = 'images/maps-and-flags.png';
+             var beachMarker = new google.maps.Marker({
+                 position: {
+                     lat: 51.5015426,
+                     lng: -0.1412795
+                 },
+                 map: map,
+                 icon: image
+             });
+         }
+      </script>
+      <!-- google map js -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+      <!-- end google map js -->
+   </body>
+</html>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'designer_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+      <!-- contact -->
+      <div class="contact">
+         <div class="container text-center">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Update Your Designs</h2>
+                     {% if msg %}
+                        <h1><span class="yello">{{msg}}</span></h1>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  
+                  <form  method="post" action="{% url 'update_design' cat=designs.design_category %}" enctype="multipart/form-data"> 
+                     {% csrf_token %}
+                     <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <select name="design_category" class="form-control">
+                               <option>---Select Design Category---</option>
+                               {% if designs.design_category == "RESIDENTAL" %}
+                                 <option value="RESIDENTAL" selected>RESIDENTAL</option>                               
+                               {% elif designs.design_category == "RETAILDESIGN" %}                               
+                                 <option value="RETAILDESIGN" selected>RETAILDESIGN</option>                              
+                               {% elif designs.design_category == "SPACEADAPTATION" %}
+                                 <option value="SPACEADAPTATION" selected>SPACEADAPTATION</option>
+                               {% else %}                               
+                               {% endif %}
+                            </select>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <figure><img src="{{designs.pic1.url}}" alt="#" style="width: 500px; height: 300px;"></figure>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic1">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <figure><img src="{{designs.pic2.url}}" alt="#" style="width: 500px; height: 300px;"></figure>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic2">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <figure><img src="{{designs.pic3.url}}" alt="#" style="width: 500px; height: 300px;"></figure>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic3">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <figure><img src="{{designs.pic4.url}}" alt="#" style="width: 500px; height: 300px;"></figure>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="pic4">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <button class="send">Add This Designs</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+
+            </div>
+         </div>
+      </div>
+      
+      <!-- end contact  -->
+   </body>
+</html>
+{% endblock %}

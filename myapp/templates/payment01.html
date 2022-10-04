@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+      <div class="instant">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="titlepage text_align_left">
+                     <h2>Payment</h2>
+                     {% if msg %}
+                        <h1><span class="yello">{{msg}}</span></h1>
+                     {% endif %}
+                     <form  method="post" action="{% url 'pay' pk=designer.pk %}"> 
+                        {% csrf_token %}
+                        <div class="row">
+                           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                              <select name="amount" class="form-control">
+                                 <option>---Select Your Place---</option>
+                                 <option value="5000000">For Flate Rs:5 Millions</option>
+                                 <option value="10000000">For Office Rs:10 Millions</option>
+                                 <option value="100000000">For Bungalows RS:100 Millions</option>
+                                 <option value="1000000000">For Villa Or Palace RS:1 Billion</option>
+                              </select>
+                           </div>
+                           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                              <button class="send">Pay</button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>               
+            </div>
+         </div>
+      </div>
+      <!-- end instant -->
+   </body>
+</html>
+{% endblock %}

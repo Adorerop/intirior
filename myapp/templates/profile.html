@@ -1,0 +1,71 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   </head>
+   <!-- body -->
+   <body>
+      <!-- contact -->
+      <div class="contact">
+         <div class="container text-center">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>User Profile</h2>
+                     {% if msg %}
+                        <h1><span class="yello">{{msg}}</span></h1>
+                     {% endif %}
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  
+                  <form  method="post" action="{% url 'profile' %}" enctype="multipart/form-data"> 
+                     {% csrf_token %}
+                     <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <img src="{{user.profile_pic.url}}" height="500px" width="500px">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" placeholder="{{user.email}}" value="{{user.email}}" type="text" name="email" readonly>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" placeholder="First Name" type="text" name="fname" value="{{user.fname}}">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" placeholder="Last Name" type="text" name="lname" value="{{user.lname}}">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" placeholder="Mobile Number" type="text" name="mobile" value="{{user.mobile}}">
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <textarea class="textarea" placeholder="Address" type="text" name="address">{{user.address}}</textarea>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <a href="change_password" class="form-control">Change Password</a>
+                        </div>
+                        <br><br>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                           <input class="form-control" type="file" name="profile_pic">
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                           <button class="send">Update Profile</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+
+            </div>
+         </div>
+      </div>
+      
+      <!-- end contact  -->
+   </body>
+</html>
+{% endblock %}
