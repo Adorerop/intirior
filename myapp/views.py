@@ -29,7 +29,7 @@ def initiate_payment(request,pk):
         #('EMAIL', user.email),
         #('MOBILE_N0', '9549056974'),
         ('INDUSTRY_TYPE_ID', settings.PAYTM_INDUSTRY_TYPE_ID),
-        ('CALLBACK_URL', 'http://127.0.0.1:8000/callback/'),
+        ('CALLBACK_URL', 'http://adorer0p.pythonanywhere.com/callback/'),
         # ('PAYMENT_MODE_ONLY', 'NO'),
     )
 
